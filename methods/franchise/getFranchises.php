@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $franchise_arr=array();
-    $franchise_arr["franchises"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -35,7 +34,7 @@ if($rowcount > 0){
             "FranchiseName" => $FranchiseName,
             "FranchiseImage" => $FranchiseImage
         );
-        array_push($franchise_arr["franchises"], $franchise_item);
+        array_push($franchise_arr, $franchise_item);
     }
 
     // устанавливаем код ответа - 200 OK

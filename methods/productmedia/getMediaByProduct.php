@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $productmedia_arr=array();
-    $productmedia_arr["productmedia"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -37,7 +36,7 @@ if($rowcount > 0){
             "ProductId" => $ProductId,
             "Media" => $Media
         );
-        array_push($productmedia_arr["productmedia"], $productmedia_item);
+        array_push($productmedia_arr, $productmedia_item);
     }
 
     // устанавливаем код ответа - 200 OK

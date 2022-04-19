@@ -28,7 +28,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $usermedia_arr=array();
-    $usermedia_arr["usermedia"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -42,7 +41,7 @@ if($rowcount > 0){
             "Date"=>$Date,
             "Title"=>$Title
         );
-        array_push($usermedia_arr["usermedia"], $usermedia_item);
+        array_push($usermedia_arr, $usermedia_item);
     }
 
     // устанавливаем код ответа - 200 OK

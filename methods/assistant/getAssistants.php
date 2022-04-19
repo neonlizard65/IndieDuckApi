@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $assistant_arr=array();
-    $assistant_arr["assistants"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -36,7 +35,7 @@ if($rowcount > 0){
             "AssistantRealName" => $AssistantRealName,
             "AssistantPass" => $AssistantPass
         );
-        array_push($assistant_arr["assistants"], $assistant_item);
+        array_push($assistant_arr, $assistant_item);
     }
 
     // устанавливаем код ответа - 200 OK

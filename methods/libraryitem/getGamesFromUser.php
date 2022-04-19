@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $libraryitem_arr=array();
-    $libraryitem_arr["libraryitems"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -39,7 +38,7 @@ if($rowcount > 0){
             "Content" => $Content,
             "Hours" => $Hours
         );
-        array_push($libraryitem_arr["libraryitems"], $libraryitem_item);
+        array_push($libraryitem_arr, $libraryitem_item);
     }
 
     // устанавливаем код ответа - 200 OK

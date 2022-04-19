@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $ost_arr=array();
-    $ost_arr["ost"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -48,7 +47,7 @@ if($rowcount > 0){
             "FranchiseName" =>  $FranchiseName,
             "AgeRatingESRB" =>  $AgeRatingESRB
         );
-        array_push($ost_arr["ost"], $ost_item);
+        array_push($ost_arr, $ost_item);
     }
 
     // устанавливаем код ответа - 200 OK

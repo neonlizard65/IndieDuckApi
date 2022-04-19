@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $cdkey_arr=array();
-    $cdkey_arr["cdkeys"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -38,7 +37,7 @@ if($rowcount > 0){
             "ProductId" => $ProductId,
             "IsRedeemed" => $IsRedeemed
         );
-        array_push($cdkey_arr["cdkeys"], $cdkey_item);
+        array_push($cdkey_arr, $cdkey_item);
     }
 
     // устанавливаем код ответа - 200 OK

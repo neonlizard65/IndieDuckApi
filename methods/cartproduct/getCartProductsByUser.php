@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $cartproduct_arr=array();
-    $cartproduct_arr["cartproduct"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -37,7 +36,7 @@ if($rowcount > 0){
             "UserId" => $UserId,
             "ProductId" => $ProductId
         );
-        array_push($cartproduct_arr["cartproduct"], $cartproduct_item);
+        array_push($cartproduct_arr, $cartproduct_item);
     }
 
     // устанавливаем код ответа - 200 OK

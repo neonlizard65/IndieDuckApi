@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $publisher_arr=array();
-    $publisher_arr["publishers"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -35,7 +34,7 @@ if($rowcount > 0){
             "PublisherName" => $PublisherName,
             "PublisherLogo" => $PublisherLogo
         );
-        array_push($publisher_arr["publishers"], $publisher_item);
+        array_push($publisher_arr, $publisher_item);
     }
 
     // устанавливаем код ответа - 200 OK

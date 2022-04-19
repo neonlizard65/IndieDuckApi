@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $achievement_arr=array();
-    $achievement_arr["achievement"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -41,7 +40,7 @@ if($rowcount > 0){
             "XP" =>  $XP,
             "IsHidden" =>  $IsHidden
         );
-        array_push($achievement_arr["achievement"], $achievement_item);
+        array_push($achievement_arr, $achievement_item);
     }
 
     // устанавливаем код ответа - 200 OK

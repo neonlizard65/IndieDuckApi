@@ -27,7 +27,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $developer_arr=array();
-    $developer_arr["developer"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -44,7 +43,7 @@ if($rowcount > 0){
             "DeveloperBio" => $DeveloperBio,
             "CountryId" => $CountryId
         );
-        array_push($developer_arr["developer"], $developer_item);
+        array_push($developer_arr, $developer_item);
     }
 
     // устанавливаем код ответа - 200 OK

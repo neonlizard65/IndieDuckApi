@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $tag_arr=array();
-    $tag_arr["tags"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -34,7 +33,7 @@ if($rowcount > 0){
             "TagID" => $TagID,
             "Name" => $Name
         );
-        array_push($tag_arr["tags"], $tag_item);
+        array_push($tag_arr, $tag_item);
     }
 
     // устанавливаем код ответа - 200 OK

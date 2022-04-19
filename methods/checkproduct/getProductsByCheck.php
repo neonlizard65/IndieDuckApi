@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $checkproduct_arr=array();
-    $checkproduct_arr["checkproduct"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -37,7 +36,7 @@ if($rowcount > 0){
             "ProductId" => $ProductId,
             "CheckId" => $CheckId
         );
-        array_push($checkproduct_arr["checkproduct"], $checkproduct_item);
+        array_push($checkproduct_arr, $checkproduct_item);
     }
 
     // устанавливаем код ответа - 200 OK

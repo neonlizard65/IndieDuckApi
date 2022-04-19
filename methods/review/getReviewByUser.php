@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $review_arr=array();
-    $review_arr["review"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -42,7 +41,7 @@ if($rowcount > 0){
             "Header" =>  $Header,
             "TextContent" => $TextContent
         );
-        array_push($review_arr["review"], $review_item);
+        array_push($review_arr, $review_item);
     }
 
     // устанавливаем код ответа - 200 OK

@@ -25,7 +25,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $bundle_arr=array();
-    $bundle_arr["bundles"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -44,7 +43,7 @@ if($rowcount > 0){
             "FranchiseName" =>  $FranchiseName,
             "AgeRatingESRB" =>  $AgeRatingESRB
         );
-        array_push($bundle_arr["bundles"], $bundle_item);
+        array_push($bundle_arr, $bundle_item);
     }
 
     // устанавливаем код ответа - 200 OK

@@ -24,8 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $specialuser_arr=array();
-    $specialuser_arr["specialusers"]=array();
-
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
         extract($row);
@@ -36,7 +34,7 @@ if($rowcount > 0){
             "Pass" => $Pass,
             "RoleName" => $RoleName
         );
-        array_push($specialuser_arr["specialusers"], $specialuser_item);
+        array_push($specialuser_arr, $specialuser_item);
     }
 
     // устанавливаем код ответа - 200 OK

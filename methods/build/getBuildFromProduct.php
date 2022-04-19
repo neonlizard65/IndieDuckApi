@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $build_arr=array();
-    $build_arr["build"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -40,7 +39,7 @@ if($rowcount > 0){
             "Date" => $Date,
             "BuildContent" => $BuildContent
         );
-        array_push($build_arr["build"], $build_item);
+        array_push($build_arr, $build_item);
     }
 
     // устанавливаем код ответа - 200 OK

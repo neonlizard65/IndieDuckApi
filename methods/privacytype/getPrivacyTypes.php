@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $privacytype_arr=array();
-    $privacytype_arr["privacytypes"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -34,7 +33,7 @@ if($rowcount > 0){
             "PrivacyTypeID" => $PrivacyTypeID,
             "Name" => $Name
         );
-        array_push($privacytype_arr["privacytypes"], $privacytype_item);
+        array_push($privacytype_arr, $privacytype_item);
     }
 
     // устанавливаем код ответа - 200 OK

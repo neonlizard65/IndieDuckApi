@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $role_arr=array();
-    $role_arr["roles"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -34,7 +33,7 @@ if($rowcount > 0){
             "RoleID" => $RoleID,
             "RoleName" => $RoleName
         );
-        array_push($role_arr["roles"], $role_item);
+        array_push($role_arr, $role_item);
     }
 
     // устанавливаем код ответа - 200 OK

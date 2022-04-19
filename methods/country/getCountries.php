@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $country_arr=array();
-    $country_arr["countries"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -36,7 +35,7 @@ if($rowcount > 0){
             "CountryCode" => $CountryCode,
             "CountryFlag" => $CountryFlag
         );
-        array_push($country_arr["countries"], $country_item);
+        array_push($country_arr, $country_item);
     }
 
     // устанавливаем код ответа - 200 OK

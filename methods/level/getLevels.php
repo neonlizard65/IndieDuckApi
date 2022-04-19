@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $level_arr=array();
-    $level_arr["levels"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -36,7 +35,7 @@ if($rowcount > 0){
             "LevelXP" => $LevelXP,
             "CouponId" => $CouponId
         );
-        array_push($level_arr["levels"], $level_item);
+        array_push($level_arr, $level_item);
     }
 
     // устанавливаем код ответа - 200 OK

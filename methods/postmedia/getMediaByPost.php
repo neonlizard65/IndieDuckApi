@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $postmedia_arr=array();
-    $postmedia_arr["postmedias"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -37,7 +36,7 @@ if($rowcount > 0){
             "PostId" => $PostId,
             "MediaContent" => $MediaContent
         );
-        array_push($postmedia_arr["postmedias"], $postmedia_item);
+        array_push($postmedia_arr, $postmedia_item);
     }
 
     // устанавливаем код ответа - 200 OK

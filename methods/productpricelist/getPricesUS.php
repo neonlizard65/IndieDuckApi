@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $productpricelist_arr=array();
-    $productpricelist_arr["productpricelists"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -34,7 +33,7 @@ if($rowcount > 0){
             "ProductId" => $ProductId,
             "PriceUS" => $PriceUS
         );
-        array_push($productpricelist_arr["productpricelists"], $productpricelist_item);
+        array_push($productpricelist_arr, $productpricelist_item);
     }
 
     // устанавливаем код ответа - 200 OK

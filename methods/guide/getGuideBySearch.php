@@ -25,7 +25,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $guide_arr=array();
-    $guide_arr["guides"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -40,7 +39,7 @@ if($rowcount > 0){
             "Header" =>  $Header,
             "TextContent" => $TextContent
         );
-        array_push($guide_arr["guides"], $guide_item);
+        array_push($guide_arr, $guide_item);
     }
 
     // устанавливаем код ответа - 200 OK

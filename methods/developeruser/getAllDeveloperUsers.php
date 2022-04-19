@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $developeruser_arr=array();
-    $developeruser_arr["developerusers"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -40,7 +39,7 @@ if($rowcount > 0){
             "IsAdmin" => $IsAdmin
 
         );
-        array_push($developeruser_arr["developerusers"], $developeruser_item);
+        array_push($developeruser_arr, $developeruser_item);
     }
 
     // устанавливаем код ответа - 200 OK

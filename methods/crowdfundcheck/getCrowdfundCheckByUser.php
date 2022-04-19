@@ -27,7 +27,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $crowdfundcheck_arr=array();
-    $crowdfundcheck_arr["crowdfundcheck"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -41,7 +40,7 @@ if($rowcount > 0){
             "Sum" => $Sum,
             "Date" => $Date
         );
-        array_push($crowdfundcheck_arr["crowdfundcheck"], $crowdfundcheck_item);
+        array_push($crowdfundcheck_arr, $crowdfundcheck_item);
     }
 
     // устанавливаем код ответа - 200 OK

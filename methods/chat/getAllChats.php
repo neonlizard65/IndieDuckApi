@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $chat_arr=array();
-    $chat_arr["chats"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -36,7 +35,7 @@ if($rowcount > 0){
             "IsPrivateChat" => $IsPrivateChat,
             "GroupId" => $GroupId
         );
-        array_push($chat_arr["chats"], $chat_item);
+        array_push($chat_arr, $chat_item);
     }
 
     // устанавливаем код ответа - 200 OK

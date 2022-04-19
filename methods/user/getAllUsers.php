@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $user_arr=array();
-    $user_arr["users"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -59,7 +58,7 @@ if($rowcount > 0){
             "ContentPrivacyTypeId" => $ContentPrivacyTypeId,
             "Name" => $Name
         );
-        array_push($user_arr["users"], $user_item);
+        array_push($user_arr, $user_item);
     }
 
     // устанавливаем код ответа - 200 OK

@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $chatuser_arr=array();
-    $chatuser_arr["chatusers"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -38,7 +37,7 @@ if($rowcount > 0){
             "UserId" => $UserId,
             "RoleId" => $RoleId
         );
-        array_push($chatuser_arr["chatusers"], $chatuser_item);
+        array_push($chatuser_arr, $chatuser_item);
     }
 
     // устанавливаем код ответа - 200 OK

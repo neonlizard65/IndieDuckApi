@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $usercoupon_arr=array();
-    $usercoupon_arr["usercoupons"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -37,7 +36,7 @@ if($rowcount > 0){
             "UserId" => $UserId,
             "CouponId" => $CouponId
         );
-        array_push($usercoupon_arr["usercoupons"], $usercoupon_item);
+        array_push($usercoupon_arr, $usercoupon_item);
     }
 
     // устанавливаем код ответа - 200 OK

@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $crowdfund_arr=array();
-    $crowdfund_arr["crowdfunds"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -38,7 +37,7 @@ if($rowcount > 0){
             "MinSumForGame" =>  $MinSumForGame,
             "EndDate" =>  $EndDate
         );
-        array_push($crowdfund_arr["crowdfunds"], $crowdfund_item);
+        array_push($crowdfund_arr, $crowdfund_item);
     }
 
     // устанавливаем код ответа - 200 OK

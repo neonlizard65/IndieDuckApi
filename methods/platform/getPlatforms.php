@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $platform_arr=array();
-    $platform_arr["platforms"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -34,7 +33,7 @@ if($rowcount > 0){
             "PlatformID" => $PlatformID,
             "Name" => $Name
         );
-        array_push($platform_arr["platforms"], $platform_item);
+        array_push($platform_arr, $platform_item);
     }
 
     // устанавливаем код ответа - 200 OK

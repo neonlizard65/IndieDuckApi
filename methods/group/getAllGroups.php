@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $group_arr=array();
-    $group_arr["groups"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -37,7 +36,7 @@ if($rowcount > 0){
             "GroupBio" => $GroupBio,
             "RolePostPrivelege" => $RolePostPrivelege
         );
-        array_push($group_arr["groups"], $group_item);
+        array_push($group_arr, $group_item);
     }
 
     // устанавливаем код ответа - 200 OK

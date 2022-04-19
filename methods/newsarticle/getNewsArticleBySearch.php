@@ -25,7 +25,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $newsarticle_arr=array();
-    $newsarticle_arr["newsarticles"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -42,7 +41,7 @@ if($rowcount > 0){
             "Header" =>  $Header,
             "TextContent" => $TextContent
         );
-        array_push($newsarticle_arr["newsarticles"], $newsarticle_item);
+        array_push($newsarticle_arr, $newsarticle_item);
     }
 
     // устанавливаем код ответа - 200 OK

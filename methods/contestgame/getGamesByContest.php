@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $contestgame_arr=array();
-    $contestgame_arr["contestgame"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -37,7 +36,7 @@ if($rowcount > 0){
             "ContestId" => $ContestId,
             "GameId" => $GameId
         );
-        array_push($contestgame_arr["contestgame"], $contestgame_item);
+        array_push($contestgame_arr, $contestgame_item);
     }
 
     // устанавливаем код ответа - 200 OK

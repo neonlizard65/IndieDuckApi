@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $messagemedia_arr=array();
-    $messagemedia_arr["messagemedia"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -37,7 +36,7 @@ if($rowcount > 0){
             "MessageId" => $MessageId,
             "Media" => $Media
         );
-        array_push($messagemedia_arr["messagemedia"], $messagemedia_item);
+        array_push($messagemedia_arr, $messagemedia_item);
     }
 
     // устанавливаем код ответа - 200 OK

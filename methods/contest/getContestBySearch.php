@@ -25,8 +25,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $contest_arr=array();
-    $contest_arr["contests"]=array();
-
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
         extract($row);
@@ -43,7 +41,7 @@ if($rowcount > 0){
             "DevMoneyReward" =>  $DevMoneyReward,
             "ContestDescription" =>  $ContestDescription
         );
-        array_push($contest_arr["contests"], $contest_item);
+        array_push($contest_arr, $contest_item);
     }
 
     // устанавливаем код ответа - 200 OK

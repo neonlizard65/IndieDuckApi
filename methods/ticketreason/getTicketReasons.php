@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $ticketreason_arr=array();
-    $ticketreason_arr["ticketreasons"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -34,7 +33,7 @@ if($rowcount > 0){
             "TicketReasonID" => $TicketReasonID,
             "Name" => $Name
         );
-        array_push($ticketreason_arr["ticketreasons"], $ticketreason_item);
+        array_push($ticketreason_arr, $ticketreason_item);
     }
 
     // устанавливаем код ответа - 200 OK

@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $producttag_arr=array();
-    $producttag_arr["producttags"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -37,7 +36,7 @@ if($rowcount > 0){
             "ProductId" => $ProductId,
             "TagId" => $TagId
         );
-        array_push($producttag_arr["producttags"], $producttag_item);
+        array_push($producttag_arr, $producttag_item);
     }
 
     // устанавливаем код ответа - 200 OK

@@ -26,6 +26,23 @@ class CDKey{
         return $stmt;
     }
 
+    function getCDKeyByID(){
+        $query = "SELECT * FROM " . $this->table_name . "
+        WHERE CDKeyID =:CDKeyID";
+        // подготовка запроса 
+        $stmt = $this->conn->prepare($query);
+        $stmt->bindParam(":CDKeyID", $this->CDKeyID);
+        // выполняем запрос 
+        $stmt->execute();
+        // получаем извлеченную строку 
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        // установим значения свойств объекта 
+        $this->CDKeyID = $row['CDKeyID'];
+        $this->Content = $row['Content'];
+        $this->IsRedeemed = $row['IsRedeemed'];
+        $this->ProductId = $row['ProductId'];
+    }
+
      // метод create - создание групп
      function create(){
         // запрос для вставки (создания) записей 

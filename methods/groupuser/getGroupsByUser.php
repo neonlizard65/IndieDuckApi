@@ -26,8 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $groupuser_arr=array();
-    $groupuser_arr["groupusers"]=array();
-
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
         extract($row);
@@ -38,7 +36,7 @@ if($rowcount > 0){
             "GroupId" => $GroupId,
             "GroupRole" => $GroupRole
         );
-        array_push($groupuser_arr["groupusers"], $groupuser_item);
+        array_push($groupuser_arr, $groupuser_item);
     }
 
     // устанавливаем код ответа - 200 OK

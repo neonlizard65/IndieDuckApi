@@ -27,7 +27,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $userachievement_arr=array();
-    $userachievement_arr["userachievement"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -39,7 +38,7 @@ if($rowcount > 0){
             "UserId" => $UserId,
             "Date" => $Date
         );
-        array_push($userachievement_arr["userachievement"], $userachievement_item);
+        array_push($userachievement_arr, $userachievement_item);
     }
 
     // устанавливаем код ответа - 200 OK

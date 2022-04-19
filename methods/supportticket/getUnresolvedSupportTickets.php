@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $supportticket_arr=array();
-    $supportticket_arr["supporttickets"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -39,7 +38,7 @@ if($rowcount > 0){
             "AdditionalInfo" => $AdditionalInfo,
             "IsResolved"=>$IsResolved
         );
-        array_push($supportticket_arr["supporttickets"], $supportticket_item);
+        array_push($supportticket_arr, $supportticket_item);
     }
 
     // устанавливаем код ответа - 200 OK

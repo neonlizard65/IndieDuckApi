@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $wishlistproduct_arr=array();
-    $wishlistproduct_arr["wishlistproduct"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -37,7 +36,7 @@ if($rowcount > 0){
             "UserId" => $UserId,
             "ProductId" => $ProductId
         );
-        array_push($wishlistproduct_arr["wishlistproduct"], $wishlistproduct_item);
+        array_push($wishlistproduct_arr, $wishlistproduct_item);
     }
 
     // устанавливаем код ответа - 200 OK

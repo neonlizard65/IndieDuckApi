@@ -8,55 +8,37 @@ header("Content-Type: application/json");
 
 // подключение файла для соединения с базой и файл с объектом 
 include_once '../../config/database.php';
-include_once '../../models/systemrequirement.php';
+include_once '../../models/cdkey.php';
 
 // получаем соединение с базой данных 
 $database = new Database();
 $db = $database->getConnection();
 
 // подготовка объекта 
-$systemrequirement = new SystemRequirement($db);
+$cdkey = new CDKey($db);
 
 // установим свойство ID записи для чтения 
-$systemrequirement->ProductId = isset($_GET['ProductId']) ? $_GET['ProductId'] : die();
+$cdkey->CDKeyID = isset($_GET['CDKeyID']) ? $_GET['CDKeyID'] : die();
 
 // прочитаем детали разраба для редактирования 
-$stmt=$systemrequirement->getSysReq();
-$rowcount =$stmt->rowCount();
+$cdkey->getCDKeyByID();
 
+// если есть ID
+if ($cdkey->ThreadID != null) {
 
-// если есть записи
-if($rowcount > 0){
-    $systemrequirement_arr=array();
-
-    while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-
-        extract($row);
-
-          // создание массива 
-        $systemrequirement_item = array(
-            "SystemRequirementID" => $SystemRequirementID,
-            "ProductId" =>  $ProductId,
-            "Name" => $Name,
-            "IsMinimumRecommended" => $IsMinimumRecommended,
-            "OS" =>  $OS,
-            "CPU" => $CPU,
-            "RAM" =>  $RAM,
-            "GPU" =>  $GPU,
-            "DirectX" =>  $DirectX,
-            "Storage" =>  $Storage,
-            "SoundCard" =>  $SoundCard,
-            "Network" =>  $Network,
-            "AdditionalNotes" =>  $AdditionalNotes
-        );
-        array_push($systemrequirement_arr, $systemrequirement_item);
-    }
+    // создание массива 
+    $cdkey_arr = array(
+        "CDKeyID" => $cdkey->ThreadID,
+        "ProductId" => $cdkey->ProductId,
+        "Content" =>  $cdkey->Content,
+        "IsRedeemed" =>  $cdkey->IsRedeemed
+    );
 
     // код ответа - 200 OK 
     http_response_code(200);
 
     // вывод в формате json 
-    echo json_encode($systemrequirement_arr);
+    echo json_encode($cdkey_arr);
 }
 
 else {

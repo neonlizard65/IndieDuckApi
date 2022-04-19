@@ -25,7 +25,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $dlc_arr=array();
-    $dlc_arr["dlcs"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -45,7 +44,7 @@ if($rowcount > 0){
             "FranchiseName" =>  $FranchiseName,
             "AgeRatingESRB" =>  $AgeRatingESRB
         );
-        array_push($dlc_arr["dlcs"], $dlc_item);
+        array_push($dlc_arr, $dlc_item);
     }
 
     // устанавливаем код ответа - 200 OK

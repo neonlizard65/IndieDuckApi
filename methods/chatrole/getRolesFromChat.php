@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $chatrole_arr=array();
-    $chatrole_arr["chatroles"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -39,7 +38,7 @@ if($rowcount > 0){
             "WritePrivelege" => $WritePrivelege,
             "ModPrivelege" => $ModPrivelege
         );
-        array_push($chatrole_arr["chatroles"], $chatrole_item);
+        array_push($chatrole_arr, $chatrole_item);
     }
 
     // устанавливаем код ответа - 200 OK

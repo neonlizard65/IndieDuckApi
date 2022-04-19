@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $track_arr=array();
-    $track_arr["tracks"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -40,7 +39,7 @@ if($rowcount > 0){
             "SongName" => $SongName,
             "Duration" => $Duration
         );
-        array_push($track_arr["tracks"], $track_item);
+        array_push($track_arr, $track_item);
     }
 
     // устанавливаем код ответа - 200 OK

@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $userfriend_arr=array();
-    $userfriend_arr["userfriends"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -40,7 +39,7 @@ if($rowcount > 0){
             "IsAccepted" => $IsAccepted,
             "IsBlocked" => $IsBlocked
         );
-        array_push($userfriend_arr["userfriends"], $userfriend_item);
+        array_push($userfriend_arr, $userfriend_item);
     }
 
     // устанавливаем код ответа - 200 OK

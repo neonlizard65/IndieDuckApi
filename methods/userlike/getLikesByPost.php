@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $userlike_arr=array();
-    $userlike_arr["userlikes"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -40,7 +39,7 @@ if($rowcount > 0){
             "ContestGameId" => $ContestGameId,
             "LikeDislike" => $LikeDislike
         );
-        array_push($userlike_arr["userlikes"], $userlike_item);
+        array_push($userlike_arr, $userlike_item);
     }
 
     // устанавливаем код ответа - 200 OK

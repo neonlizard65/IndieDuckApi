@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $status_arr=array();
-    $status_arr["statuses"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -36,7 +35,7 @@ if($rowcount > 0){
             "StatusIcon" => $StatusIcon,
             "StatusColor" => $StatusColor
         );
-        array_push($status_arr["statuses"], $status_item);
+        array_push($status_arr, $status_item);
     }
 
     // устанавливаем код ответа - 200 OK

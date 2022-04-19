@@ -25,7 +25,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $thread_arr=array();
-    $thread_arr["threads"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -40,7 +39,7 @@ if($rowcount > 0){
             "Header" =>  $Header,
             "TextContent" => $TextContent
         );
-        array_push($thread_arr["threads"], $thread_item);
+        array_push($thread_arr, $thread_item);
     }
 
     // устанавливаем код ответа - 200 OK

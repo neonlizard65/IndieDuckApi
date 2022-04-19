@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $developeruser_arr=array();
-    $developeruser_arr["developeruser"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -40,7 +39,7 @@ if($rowcount > 0){
             "DeveloperUserGuardCode" => $DeveloperUserGuardCode,
             "DeveloperId" => $DeveloperId
         );
-        array_push($developeruser_arr["developeruser"], $developeruser_item);
+        array_push($developeruser_arr, $developeruser_item);
     }
 
     // устанавливаем код ответа - 200 OK

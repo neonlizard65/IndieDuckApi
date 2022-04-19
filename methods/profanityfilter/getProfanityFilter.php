@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $profanityfilter_arr=array();
-    $profanityfilter_arr["profanityfilters"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -34,7 +33,7 @@ if($rowcount > 0){
             "ProfanityFilterID" => $ProfanityFilterID,
             "Word" => $Word
         );
-        array_push($profanityfilter_arr["profanityfilters"], $profanityfilter_item);
+        array_push($profanityfilter_arr, $profanityfilter_item);
     }
 
     // устанавливаем код ответа - 200 OK

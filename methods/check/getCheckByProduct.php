@@ -27,7 +27,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $check_arr=array();
-    $check_arr["check"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -43,7 +42,7 @@ if($rowcount > 0){
             "IsRefunded" => $IsRefunded,
             "Date" => $Date
         );
-        array_push($check_arr["check"], $check_item);
+        array_push($check_arr, $check_item);
     }
 
     // устанавливаем код ответа - 200 OK

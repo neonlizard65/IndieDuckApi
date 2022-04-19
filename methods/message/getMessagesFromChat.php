@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $message_arr=array();
-    $message_arr["messages"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -39,7 +38,7 @@ if($rowcount > 0){
             "ChatId" => $ChatId,
             "Date" => $Date
         );
-        array_push($message_arr["messages"], $message_item);
+        array_push($message_arr, $message_item);
     }
 
     // устанавливаем код ответа - 200 OK

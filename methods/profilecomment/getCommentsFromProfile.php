@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $profilecomment_arr=array();
-    $profilecomment_arr["profilecomments"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -39,7 +38,7 @@ if($rowcount > 0){
             "Content" => $Content,
             "Date" => $Date
         );
-        array_push($profilecomment_arr["profilecomments"], $profilecomment_item);
+        array_push($profilecomment_arr, $profilecomment_item);
     }
 
     // устанавливаем код ответа - 200 OK

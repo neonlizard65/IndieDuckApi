@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $reportreason_arr=array();
-    $reportreason_arr["reportreasons"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -34,7 +33,7 @@ if($rowcount > 0){
             "ReportReasonID" => $ReportReasonID,
             "ReasonName" => $ReasonName
         );
-        array_push($reportreason_arr["reportreasons"], $reportreason_item);
+        array_push($reportreason_arr, $reportreason_item);
     }
 
     // устанавливаем код ответа - 200 OK

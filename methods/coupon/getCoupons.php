@@ -24,7 +24,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $coupon_arr=array();
-    $coupon_arr["coupons"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -35,7 +34,7 @@ if($rowcount > 0){
             "CouponName" => $CouponName,
             "DiscountPercent" => $DiscountPercent
         );
-        array_push($coupon_arr["coupons"], $coupon_item);
+        array_push($coupon_arr, $coupon_item);
     }
 
     // устанавливаем код ответа - 200 OK

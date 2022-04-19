@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $ticketmessage_arr=array();
-    $ticketmessage_arr["ticketmessages"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -41,7 +40,7 @@ if($rowcount > 0){
             "Date"=>$Date,
             "Content"=>$Content
         );
-        array_push($ticketmessage_arr["ticketmessages"], $ticketmessage_item);
+        array_push($ticketmessage_arr, $ticketmessage_item);
     }
 
     // устанавливаем код ответа - 200 OK

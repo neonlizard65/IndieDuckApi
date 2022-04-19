@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $grouppost_arr=array();
-    $grouppost_arr["grouppost"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -41,7 +40,7 @@ if($rowcount > 0){
             "Header" =>  $Header,
             "TextContent" => $TextContent
         );
-        array_push($grouppost_arr["grouppost"], $grouppost_item);
+        array_push($grouppost_arr, $grouppost_item);
     }
 
     // устанавливаем код ответа - 200 OK

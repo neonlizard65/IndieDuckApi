@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $postcomment_arr=array();
-    $postcomment_arr["postcomment"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -39,7 +38,7 @@ if($rowcount > 0){
             "PostId" => $PostId,
             "Content" => $Content
         );
-        array_push($postcomment_arr["postcomment"], $postcomment_item);
+        array_push($postcomment_arr, $postcomment_item);
     }
 
     // устанавливаем код ответа - 200 OK

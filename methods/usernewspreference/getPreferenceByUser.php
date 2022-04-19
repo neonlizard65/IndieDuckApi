@@ -26,7 +26,6 @@ $rowcount =$stmt->rowCount();
 // если есть записи
 if($rowcount > 0){
     $usernewspreference_arr=array();
-    $usernewspreference_arr["usernewspreferences"]=array();
 
     while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
 
@@ -39,7 +38,7 @@ if($rowcount > 0){
             "PublisherId" => $PublisherId,
             "ProductId" => $ProductId
         );
-        array_push($usernewspreference_arr["usernewspreferences"], $usernewspreference_item);
+        array_push($usernewspreference_arr, $usernewspreference_item);
     }
 
     // устанавливаем код ответа - 200 OK
