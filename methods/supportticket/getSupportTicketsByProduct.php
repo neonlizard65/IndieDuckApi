@@ -35,6 +35,7 @@ if($rowcount > 0){
         $supportticket_item=array(
             "SupportTicketID" => $SupportTicketID,
             "UserId" => $UserId,
+            "DeveloperUserId" => $DeveloperUserId,
             "ProductId" => $ProductId,
             "Name" => $Name,
             "AdditionalInfo" => $AdditionalInfo,

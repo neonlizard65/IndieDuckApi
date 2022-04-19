@@ -9,6 +9,7 @@ class TicketMessage{
     public $TicketId;
     public $AssistantId;
     public $UserId;
+    public $DeveloperUserId;
     public $Date;
     public $Content;
 
@@ -36,6 +37,7 @@ class TicketMessage{
                     TicketId=:TicketId,
                     AssistantId=:AssistantId,
                     UserId=:UserId,
+                    DeveloperUserId=:DeveloperUserId,
                     Date=:Date,
                     Content=:Content";
 
@@ -51,6 +53,7 @@ class TicketMessage{
         $stmt->bindParam(":TicketId", $this->TicketId);
         $stmt->bindParam(":AssistantId", $this->AssistantId);
         $stmt->bindParam(":UserId", $this->UserId);
+        $stmt->bindParam(":DeveloperUserId", $this->DeveloperUserId);
         $stmt->bindParam(":Date", $this->Date);
         $stmt->bindParam(":Content", $this->Content);
 
@@ -70,6 +73,7 @@ class TicketMessage{
                     TicketId=:TicketId,
                     AssistantId=:AssistantId,
                     UserId=:UserId,
+                    DeveloperUserId=:DeveloperUserId,
                     Date=:Date,
                     Content=:Content
                 WHERE
@@ -89,6 +93,8 @@ class TicketMessage{
         $stmt->bindParam(":TicketId", $this->TicketId);
         $stmt->bindParam(":AssistantId", $this->AssistantId);
         $stmt->bindParam(":UserId", $this->UserId);
+        $stmt->bindParam(":DeveloperUserId", $this->DeveloperUserId);
+
         $stmt->bindParam(":Date", $this->Date);
         $stmt->bindParam(":Content", $this->Content);
         

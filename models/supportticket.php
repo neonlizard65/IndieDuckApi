@@ -7,6 +7,7 @@ class SupportTicket{
 
     public $SupportTicketID;
     public $UserId;
+    public $DeveloperUserId;
     public $ProductId;
     public $TicketReasonId;
     public $TicketReasonText;
@@ -19,7 +20,7 @@ class SupportTicket{
     } 
 
     function getAllSupportTickets(){
-        $query = "SELECT st.SupportTicketID, st.UserId, st.ProductId, st.TicketReasonId, tr.Name, st.AdditionalInfo, st.IsResolved  
+        $query = "SELECT st.SupportTicketID, st.UserId, st.DeveloperUserId, st.ProductId, st.TicketReasonId, tr.Name, st.AdditionalInfo, st.IsResolved  
         FROM " . $this->table_name . " st INNER JOIN TicketReason tr ON st.TicketReasonId = tr.TicketReasonID";
         // подготовка запроса 
         $stmt = $this->conn->prepare($query);
@@ -28,7 +29,7 @@ class SupportTicket{
         return $stmt;
     }
     function getUnresolvedSupportTickets(){
-        $query = "SELECT st.SupportTicketID, st.UserId, st.ProductId, st.TicketReasonId, tr.Name, st.AdditionalInfo, st.IsResolved  
+        $query = "SELECT st.SupportTicketID, st.UserId, st.DeveloperUserId,  st.ProductId, st.TicketReasonId, tr.Name, st.AdditionalInfo, st.IsResolved  
         FROM " . $this->table_name . " st INNER JOIN TicketReason tr ON st.TicketReasonId = tr.TicketReasonID WHERE st.IsResolved = 0";
         // подготовка запроса 
         $stmt = $this->conn->prepare($query);
@@ -36,7 +37,7 @@ class SupportTicket{
         return $stmt;
     }
     function getSupportTicketsByProduct(){
-        $query = "SELECT st.SupportTicketID, st.UserId, st.ProductId, st.TicketReasonId, tr.Name, st.AdditionalInfo, st.IsResolved  
+        $query = "SELECT st.SupportTicketID, st.UserId, st.DeveloperUserId, st.ProductId, st.TicketReasonId, tr.Name, st.AdditionalInfo, st.IsResolved  
         FROM " . $this->table_name . " st INNER JOIN TicketReason tr ON st.TicketReasonId = tr.TicketReasonID WHERE st.ProductId=:ProductId";
         // подготовка запроса 
         $stmt = $this->conn->prepare($query);
@@ -46,11 +47,16 @@ class SupportTicket{
         return $stmt; 
     }
     function getSupportTicketsByUser(){
-        $query = "SELECT st.SupportTicketID, st.UserId, st.ProductId, st.TicketReasonId, tr.Name, st.AdditionalInfo, st.IsResolved  
+        $query = "SELECT st.SupportTicketID, st.UserId, st.DeveloperUserId, st.ProductId, st.TicketReasonId, tr.Name, st.AdditionalInfo, st.IsResolved  
         FROM " . $this->table_name . " st INNER JOIN TicketReason tr ON st.TicketReasonId = tr.TicketReasonID WHERE st.UserId=:UserId";
         // подготовка запроса 
         $stmt = $this->conn->prepare($query);
-        $stmt->bindParam(":UserId", $this->UserId);
+        if($this->UserId != null){
+            $stmt->bindParam(":UserId", $this->UserId);
+        }
+        else if($this->DeveloperUserId != null){
+            $stmt->bindParam(":DeveloperUserId", $this->DeveloperUserId);
+        }
         // выполняем запрос 
         $stmt->execute();
         return $stmt;
@@ -63,6 +69,7 @@ class SupportTicket{
                     " . $this->table_name . "
                 SET
                     UserId=:UserId,
+                    DeveloperUserId=:DeveloperUserId,
                     ProductId=:ProductId,
                     TicketReasonId=:TicketReasonId,
                     AdditionalInfo =:AdditionalInfo,
@@ -73,11 +80,13 @@ class SupportTicket{
 
         // очисткa
         $this->UserId=htmlspecialchars(strip_tags($this->UserId));
+        $this->DeveloperUserId=htmlspecialchars(strip_tags($this->DeveloperUserId));
         $this->TicketReasonId=htmlspecialchars(strip_tags($this->TicketReasonId));
         $this->AdditionalInfo=htmlspecialchars(strip_tags($this->AdditionalInfo));
 
         // привязка значений 
         $stmt->bindParam(":UserId", $this->UserId);
+        $stmt->bindParam(":DeveloperUserId", $this->DeveloperUserId);
         $stmt->bindParam(":ProductId", $this->ProductId);
         $stmt->bindParam(":TicketReasonId", $this->TicketReasonId);
         $stmt->bindParam(":AdditionalInfo", $this->AdditionalInfo);
@@ -97,6 +106,7 @@ class SupportTicket{
                     " . $this->table_name . "
                 SET
                     UserId=:UserId,
+                    DeveloperUserId=:DeveloperUserId,
                     ProductId=:ProductId,
                     TicketReasonId=:TicketReasonId,
                     AdditionalInfo =:AdditionalInfo,
@@ -110,12 +120,15 @@ class SupportTicket{
         // очисткa
         $this->SupportTicketID=htmlspecialchars(strip_tags($this->SupportTicketID));
         $this->UserId=htmlspecialchars(strip_tags($this->UserId));
+        $this->DeveloperUserId=htmlspecialchars(strip_tags($this->DeveloperUserId));
+
         $this->TicketReasonId=htmlspecialchars(strip_tags($this->TicketReasonId));
         $this->AdditionalInfo=htmlspecialchars(strip_tags($this->AdditionalInfo));
 
         // привязка значений 
         $stmt->bindParam(":SupportTicketID", $this->SupportTicketID);
         $stmt->bindParam(":UserId", $this->UserId);
+        $stmt->bindParam(":DeveloperUserId", $this->DeveloperUserId);
         $stmt->bindParam(":ProductId", $this->ProductId);
         $stmt->bindParam(":TicketReasonId", $this->TicketReasonId);
         $stmt->bindParam(":AdditionalInfo", $this->AdditionalInfo);

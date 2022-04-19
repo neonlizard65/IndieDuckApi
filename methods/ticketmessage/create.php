@@ -28,6 +28,7 @@ if (
     // устанавливаем значения свойств товара 
     $ticketmessage->TicketId = $data->TicketId;
     $ticketmessage->UserId = $data->UserId;
+    $ticketmessage->DeveloperUserId = $data->DeveloperUserId;
     $ticketmessage->AssistantId = $data->AssistantId;
     $ticketmessage->Date = $data->Date;
     $ticketmessage->Content = $data->Content;

@@ -36,6 +36,7 @@ if($rowcount > 0){
             "TicketMessageID" => $TicketMessageID,
             "TicketId" => $TicketId,
             "UserId" => $UserId,
+            "DeveloperUserId" => $DeveloperUserId,
             "AssistantId" => $AssistantId,
             "Date"=>$Date,
             "Content"=>$Content

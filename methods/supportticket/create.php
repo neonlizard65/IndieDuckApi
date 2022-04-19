@@ -20,12 +20,14 @@ $data = json_decode(file_get_contents("php://input"));
 
 // убеждаемся, что данные не пусты 
 if (
-    !empty($data->UserId) &&
+    (!empty($data->UserId) || !empty($data->DeveloperUserId) ) &&
     !empty($data->TicketReasonId)
     ) 
 {
     // устанавливаем значения свойств товара 
     $supportticket->UserId = $data->UserId;
+    $supportticket->DeveloperUserId = $data->DeveloperUserId;
+
     $supportticket->ProductId = $data->ProductId;
     $supportticket->TicketReasonId = $data->TicketReasonId;
     $supportticket->AdditionalInfo = $data->AdditionalInfo;
@@ -36,7 +38,7 @@ if (
         // установим код ответа - 201 создано 
         http_response_code(201);
         // сообщим пользователю 
-        echo json_encode(array("message" => "Группа добавлена."), JSON_UNESCAPED_UNICODE);
+        echo json_encode(array("message" => "Билет добавлен."), JSON_UNESCAPED_UNICODE);
     }
 
     // если не удается создать товар, сообщим пользователю 
@@ -45,7 +47,7 @@ if (
         http_response_code(503);
 
         // сообщим пользователю 
-        echo json_encode(array("message" => "Невозможно добавить группу."), JSON_UNESCAPED_UNICODE);
+        echo json_encode(array("message" => "Невозможно добавить билет."), JSON_UNESCAPED_UNICODE);
     }
 }
 

@@ -18,7 +18,13 @@ $db = $database->getConnection();
 
 $supportticket = new SupportTicket($db);
 // чтение 
-$supportticket->UserId = isset($_GET["UserId"]) ? $_GET["UserId"] : die(); 
+if(isset($_GET["UserId"])){
+    $supportticket->UserId = $_GET["UserId"]; 
+}
+else if(isset($_GET["DeveloperUserId"])){
+    $supportticket->DeveloperUserId = $_GET["DeveloperUserId"]; 
+
+}
 
 $stmt = $supportticket->getSupportTicketsByUser();
 $rowcount =$stmt->rowCount();
@@ -35,6 +41,7 @@ if($rowcount > 0){
         $supportticket_item=array(
             "SupportTicketID" => $SupportTicketID,
             "UserId" => $UserId,
+            "DeveloperUserId" => $DeveloperUserId,
             "ProductId" => $ProductId,
             "Name" => $Name,
             "AdditionalInfo" => $AdditionalInfo,

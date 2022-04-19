@@ -24,6 +24,7 @@ $supportticket->SupportTicketID = $data->SupportTicketID;
 if(isset($supportticket->SupportTicketID)){
     // устанавливаем значения свойств  
     $supportticket->UserId = $data->UserId;
+    $supportticket->DeveloperUserId = $data->DeveloperUserId;
     $supportticket->ProductId = $data->ProductId;
     $supportticket->TicketReasonId = $data->TicketReasonId;
     $supportticket->AdditionalInfo = $data->AdditionalInfo;
