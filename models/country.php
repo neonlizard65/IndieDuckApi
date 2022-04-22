@@ -8,7 +8,7 @@ class Country{
     public $CountryID;
     public $CountryName;
     public $CountryCode;
-    public $CountryFlagImage;
+    public $CountryFlag;
 
     public function __construct($db) {
         //конструктор

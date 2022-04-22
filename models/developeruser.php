@@ -123,7 +123,7 @@ class DeveloperUser{
                     DeveloperUserName=:DeveloperUserName,
                     DeveloperUserPass=:DeveloperUserPass,
                     DeveloperUserEmail=:DeveloperUserEmail,
-                    DeveloperId=:DeveloperId
+                    DeveloperId=:DeveloperId,
                     IsAdmin=:IsAdmin
                 WHERE
                     DeveloperUserID = :DeveloperUserID";
