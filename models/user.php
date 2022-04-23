@@ -20,19 +20,12 @@ class User{
     public $ProfileBackground;
     public $IsPrivate;
     public $StatusId;
-    public $StatusName;
-    public $StatusIcon;
-    public $StatusColor;
     public $UserRealName;
     public $UserCountryId;
-    public $CountryName;
-    public $CountryCode;
-    public $CountryFlagImage;
     public $Bio;
     public $EmailSubscription;
     public $LastOnline;
     public $ContentPrivacyTypeId;
-    public $PrivacyTypeName;
 
 
     public function __construct($db) {
@@ -43,13 +36,9 @@ class User{
     //получить пользователя по логину
     function getUserByLogin(){
         //запрос
-        $query = "SELECT u.UserID, u.UserName, u.UserPassword, u.UserEmail, u.UserPhone, u.UserAuthToken, u.UserGuardCode, u.UserLevelId, l.LevelNumber, u.UserAvatar, u.UserXP, u.ProfileBackground, u.IsPrivate,
-        u.StatusId, s.StatusName, s.StatusIcon, s.StatusColor, u.UserRealName, u.UserCountryId, c.CountryName, c.CountryCode, c.CountryFlagImage, u.Bio, u.EmailSubscription,
-        u.LastOnline, u.ContentPrivacyTypeId, cp.Name  FROM " . $this->table_name . " u 
-        INNER JOIN Level l ON u.UserLevelId = l.LevelID 
-        INNER JOIN Status s ON u.StatusId = s.StatusID 
-        INNER JOIN Country c ON u.UserCountryId = c.CountryID
-        INNER JOIN PrivacyType cp ON u.ContentPrivacyTypeId = cp.PrivacyTypeID
+        $query = "SELECT u.UserID, u.UserName, u.UserPassword, u.UserEmail, u.UserPhone, u.UserAuthToken, u.UserGuardCode, u.UserLevelId, u.UserAvatar, u.UserXP, u.ProfileBackground, u.IsPrivate,
+        u.StatusId, u.UserRealName, u.UserCountryId, u.Bio, u.EmailSubscription,
+        u.LastOnline, u.ContentPrivacyTypeId FROM " . $this->table_name . " u
         WHERE u.UserName =:UserName";
         // подготовка запроса 
         $stmt = $this->conn->prepare($query);
@@ -68,38 +57,26 @@ class User{
         $this->UserAuthToken = $row['UserAuthToken'];
         $this->UserGuardCode = $row['UserGuardCode'];
         $this->UserLevelId = $row['UserLevelId'];
-        $this->LevelNumber = $row['LevelNumber'];
         $this->UserAvatar = $row['UserAvatar'];
         $this->UserXP = $row['UserXP'];
         $this->ProfileBackground = $row['ProfileBackground'];
         $this->IsPrivate = $row['IsPrivate'];
         $this->StatusId = $row['StatusId'];
-        $this->StatusName = $row['StatusName'];
-        $this->StatusIcon = $row['StatusIcon']; 
-        $this->StatusColor = $row['StatusColor'];
         $this->UserRealName = $row['UserRealName'];
         $this->UserCountryId = $row['UserCountryId'];
-        $this->CountryName = $row['CountryName']; 
-        $this->CountryCode = $row['CountryCode'];
-        $this->CountryFlagImage = $row['CountryFlagImage'];
         $this->Bio = $row['Bio'];
         $this->EmailSubscription = $row['EmailSubscription'];
         $this->LastOnline = $row['LastOnline'];
         $this->ContentPrivacyTypeId = $row['ContentPrivacyTypeId'];
-        $this->PrivacyTypeName = $row['Name'];
     }
     
     // логин по почте
     function getUserByEmail() {
         //запрос
-        $query = "SELECT u.UserID, u.UserName, u.UserPassword, u.UserEmail, u.UserPhone, u.UserAuthToken, u.UserGuardCode, u.UserLevelId, l.LevelNumber, u.UserAvatar, u.UserXP, u.ProfileBackground, u.IsPrivate,
-        u.StatusId, s.StatusName, s.StatusIcon, s.StatusColor, u.UserRealName, u.UserCountryId, c.CountryName, c.CountryCode, c.CountryFlagImage, u.Bio, u.EmailSubscription,
-        u.LastOnline, u.ContentPrivacyTypeId, cp.Name  FROM " . $this->table_name . " u 
-        INNER JOIN Level l ON u.UserLevelId = l.LevelID 
-        LEFT JOIN Status s ON u.StatusId = s.StatusID 
-        LEFT JOIN Country c ON u.UserCountryId = c.CountryID
-        LEFT JOIN PrivacyType cp ON u.ContentPrivacyTypeId = cp.PrivacyTypeID
-        WHERE u.UserEmail =:UserEmail ";
+        $query = "SELECT u.UserID, u.UserName, u.UserPassword, u.UserEmail, u.UserPhone, u.UserAuthToken, u.UserGuardCode, u.UserLevelId, u.UserAvatar, u.UserXP, u.ProfileBackground, u.IsPrivate,
+        u.StatusId, u.UserRealName, u.UserCountryId, u.Bio, u.EmailSubscription,
+        u.LastOnline, u.ContentPrivacyTypeId FROM " . $this->table_name . " u
+        WHERE u.UserEmail =:UserEmail";
         // подготовка запроса 
         $stmt = $this->conn->prepare($query);
         // привязываем полученную почту с почтами из запроса
@@ -111,45 +88,33 @@ class User{
         // установим значения свойств объекта 
         $this->UserID = $row['UserID'];
         $this->UserName = $row['UserName'];
-        $this->UserEmail = $row['UserEmail'];
         $this->UserPassword = $row['UserPassword'];
+        $this->UserEmail = $row['UserEmail'];
         $this->UserPhone = $row['UserPhone'];
         $this->UserAuthToken = $row['UserAuthToken'];
         $this->UserGuardCode = $row['UserGuardCode'];
         $this->UserLevelId = $row['UserLevelId'];
-        $this->LevelNumber = $row['LevelNumber'];
         $this->UserAvatar = $row['UserAvatar'];
         $this->UserXP = $row['UserXP'];
         $this->ProfileBackground = $row['ProfileBackground'];
         $this->IsPrivate = $row['IsPrivate'];
         $this->StatusId = $row['StatusId'];
-        $this->StatusName = $row['StatusName'];
-        $this->StatusIcon = $row['StatusIcon']; 
-        $this->StatusColor = $row['StatusColor'];
         $this->UserRealName = $row['UserRealName'];
         $this->UserCountryId = $row['UserCountryId'];
-        $this->CountryName = $row['CountryName']; 
-        $this->CountryCode = $row['CountryCode'];
-        $this->CountryFlagImage = $row['CountryFlagImage'];
         $this->Bio = $row['Bio'];
         $this->EmailSubscription = $row['EmailSubscription'];
         $this->LastOnline = $row['LastOnline'];
         $this->ContentPrivacyTypeId = $row['ContentPrivacyTypeId'];
-        $this->PrivacyTypeName = $row['Name'];
 
     }
 
     // логин по телефону
     function getUserByPhone() {
         //запрос
-        $query = "SELECT u.UserID, u.UserName, u.UserPassword, u.UserEmail, u.UserPhone, u.UserAuthToken, u.UserGuardCode, u.UserLevelId, l.LevelNumber, u.UserAvatar, u.UserXP, u.ProfileBackground, u.IsPrivate,
-        u.StatusId, s.StatusName, s.StatusIcon, s.StatusColor, u.UserRealName, u.UserCountryId, c.CountryName, c.CountryCode, c.CountryFlagImage, u.Bio, u.EmailSubscription,
-        u.LastOnline, u.ContentPrivacyTypeId, cp.Name  FROM " . $this->table_name . " u 
-        INNER JOIN Level l ON u.UserLevelId = l.LevelID 
-        LEFT JOIN Status s ON u.StatusId = s.StatusID 
-        LEFT JOIN Country c ON u.UserCountryId = c.CountryID
-        LEFT JOIN PrivacyType cp ON u.ContentPrivacyTypeId = cp.PrivacyTypeID
-        WHERE u.UserPhone =:UserPhone ";
+        $query = "SELECT u.UserID, u.UserName, u.UserPassword, u.UserEmail, u.UserPhone, u.UserAuthToken, u.UserGuardCode, u.UserLevelId, u.UserAvatar, u.UserXP, u.ProfileBackground, u.IsPrivate,
+        u.StatusId, u.UserRealName, u.UserCountryId, u.Bio, u.EmailSubscription,
+        u.LastOnline, u.ContentPrivacyTypeId FROM " . $this->table_name . " u
+        WHERE u.UserPhone =:UserPhone";
         // подготовка запроса 
         $stmt = $this->conn->prepare($query);
         // привязываем полученный телефон с телефонами из запроса
@@ -167,36 +132,25 @@ class User{
         $this->UserAuthToken = $row['UserAuthToken'];
         $this->UserGuardCode = $row['UserGuardCode'];
         $this->UserLevelId = $row['UserLevelId'];
-        $this->LevelNumber = $row['LevelNumber'];
         $this->UserAvatar = $row['UserAvatar'];
         $this->UserXP = $row['UserXP'];
         $this->ProfileBackground = $row['ProfileBackground'];
         $this->IsPrivate = $row['IsPrivate'];
         $this->StatusId = $row['StatusId'];
-        $this->StatusName = $row['StatusName'];
-        $this->StatusIcon = $row['StatusIcon']; 
-        $this->StatusColor = $row['StatusColor'];
         $this->UserRealName = $row['UserRealName'];
         $this->UserCountryId = $row['UserCountryId'];
-        $this->CountryName = $row['CountryName']; 
-        $this->CountryCode = $row['CountryCode'];
-        $this->CountryFlagImage = $row['CountryFlagImage'];
         $this->Bio = $row['Bio'];
         $this->EmailSubscription = $row['EmailSubscription'];
         $this->LastOnline = $row['LastOnline'];
         $this->ContentPrivacyTypeId = $row['ContentPrivacyTypeId'];
-        $this->PrivacyTypeName = $row['Name'];
+
     }
 
     function getAllUsers() {
         //запрос
-        $query = "SELECT u.UserID, u.UserName, u.UserPassword, u.UserEmail, u.UserPhone, u.UserAuthToken, u.UserGuardCode, u.UserLevelId, l.LevelNumber, u.UserAvatar, u.UserXP, u.ProfileBackground, u.IsPrivate,
-        u.StatusId, s.StatusName, s.StatusIcon, s.StatusColor, u.UserRealName, u.UserCountryId, c.CountryName, c.CountryCode, c.CountryFlagImage, u.Bio, u.EmailSubscription,
-        u.LastOnline, u.ContentPrivacyTypeId, cp.Name  FROM " . $this->table_name . " u 
-        INNER JOIN Level l ON u.UserLevelId = l.LevelID 
-        LEFT JOIN Status s ON u.StatusId = s.StatusID 
-        LEFT JOIN Country c ON u.UserCountryId = c.CountryID
-        LEFT JOIN PrivacyType cp ON u.ContentPrivacyTypeId = cp.PrivacyTypeID
+        $query = "SELECT u.UserID, u.UserName, u.UserPassword, u.UserEmail, u.UserPhone, u.UserAuthToken, u.UserGuardCode, u.UserLevelId, u.UserAvatar, u.UserXP, u.ProfileBackground, u.IsPrivate,
+        u.StatusId, u.UserRealName, u.UserCountryId, u.Bio, u.EmailSubscription,
+        u.LastOnline, u.ContentPrivacyTypeId  FROM " . $this->table_name . " u 
         ";
         // подготовка запроса s
         $stmt = $this->conn->prepare($query);
@@ -208,14 +162,10 @@ class User{
     
     function getUsersSearch($search) {
         //запрос
-        $query = "SELECT u.UserID, u.UserName, u.UserPassword, u.UserEmail, u.UserPhone, u.UserAuthToken, u.UserGuardCode, u.UserLevelId, l.LevelNumber, u.UserAvatar, u.UserXP, u.ProfileBackground, u.IsPrivate,
-        u.StatusId, s.StatusName, s.StatusIcon, s.StatusColor, u.UserRealName, u.UserCountryId, c.CountryName, c.CountryCode, c.CountryFlagImage, u.Bio, u.EmailSubscription,
-        u.LastOnline, u.ContentPrivacyTypeId, cp.Name  FROM " . $this->table_name . " u 
-        INNER JOIN Level l ON u.UserLevelId = l.LevelID
-        LEFT JOIN Status s ON u.StatusId = s.StatusID 
-        LEFT JOIN Country c ON u.UserCountryId = c.CountryID
-        LEFT JOIN PrivacyType cp ON u.ContentPrivacyTypeId = cp.PrivacyTypeID
-        WHERE UPPER(u.UserName) LIKE UPPER('%" . $search . "%')";
+        $query = "SELECT u.UserID, u.UserName, u.UserPassword, u.UserEmail, u.UserPhone, u.UserAuthToken, u.UserGuardCode, u.UserLevelId, u.UserAvatar, u.UserXP, u.ProfileBackground, u.IsPrivate,
+        u.StatusId, u.UserRealName, u.UserCountryId, u.Bio, u.EmailSubscription,
+        u.LastOnline, u.ContentPrivacyTypeId FROM " . $this->table_name . " u 
+         WHERE UPPER(u.UserName) LIKE UPPER('%" . $search . "%')";
         // подготовка запроса 
         $stmt = $this->conn->prepare($query);
         // выполняем запрос 
@@ -461,33 +411,6 @@ class User{
         return false;
     }
 
-    
-    function updateBotToken(){
-
-        // запрос для обновления записи (товара) 
-        $query = "UPDATE
-                    " . $this->table_name . "
-                SET
-                  UserBotToken =:UserBotToken
-                WHERE
-                  UserID =:UserID";
-
-        // подготовка запроса 
-        $stmt = $this->conn->prepare($query);
-
-        // очисткa
-        $this->UserBotToken=htmlspecialchars(strip_tags($this->generateBotToken()));
-        // привязка значений 
-        $stmt->bindParam(":UserID", $this->UserID);
-        $stmt->bindParam(":UserBotToken", $this->UserBotToken);
-
-        // выполняем запрос 
-        if ($stmt->execute()) {
-            return true;
-        }
-        return false;
-    }
-
     function updateGuardCode(){
 
         // запрос для обновления записи (товара) 
@@ -512,41 +435,6 @@ class User{
             return true;
         }
         return false;
-    }
-
-  
-    function generateBotToken(){
-        // генерация токена для входа через QR код
-        $bottoken = '';
-        $symbolarray = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-        $flag = 0;
-        while($flag == 0){
-            // создаем код
-            for($i = 0; $i < 50; $i++){
-                $bottoken = $bottoken . $symbolarray[rand(0, strlen($symbolarray) - 1)];
-            }
-            $query = "SELECT COUNT(UserBotToken) FROM " . $this->table_name . " WHERE UserBotToken =:UserBotToken";
-            
-            //проверяем если такой уже есть, если нет, выходим из цикла
-            $stmt = $this->conn->prepare($query);
-            // привязываем полученную почту с почтами из запроса
-            $stmt->bindParam(":UserBotToken", $bottoken);
-            // выполняем запрос 
-            $stmt->execute();
-            // получаем извлеченную строку 
-            $row = $stmt->fetch(PDO::FETCH_ASSOC);
-            // подключение базы данных и файл, содержащий объекты 
-    
-            $count = 0;
-            foreach ($stmt as $row) {
-                $count = $row[0];
-            };
-
-            if($count == 0){
-                $flag = 1;
-            }
-        }
-        return $bottoken;
     }
 }
 ?>

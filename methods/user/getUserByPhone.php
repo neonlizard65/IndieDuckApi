@@ -36,25 +36,17 @@ if ($user->UserID != null) {
         "UserAuthToken" => $user->UserAuthToken,
         "UserGuardCode" => $user->UserGuardCode,
         "UserLevelId" => $user->UserLevelId,
-        "LevelNumber" => $user->LevelNumber,
         "UserAvatar" => $user->UserAvatar,
         "UserXP" => $user->UserXP,
         "ProfileBackground" => $user->ProfileBackground,
         "IsPrivate" => $user->IsPrivate,
         "StatusId" => $user->StatusId,
-        "StatusName" => $user->StatusName,
-        "StatusIcon" => $user->StatusIcon,
-        "StatusColor" => $user->StatusColor,
         "UserRealName" => $user->UserRealName,
         "UserCountryId" => $user->UserCountryId,
-        "CountryName" => $user->CountryName,
-        "CountryCode" => $user->CountryCode,
-        "CountryFlagImage" => $user->CountryFlagImage,
         "Bio" => $user->Bio,
         "EmailSubscription" => $user->EmailSubscription,
         "LastOnline" => $user->LastOnline,
-        "ContentPrivacyTypeId" => $user->ContentPrivacyTypeId,
-        "Name" => $user->PrivacyTypeName
+        "ContentPrivacyTypeId" => $user->ContentPrivacyTypeId
     );
 
     // код ответа - 200 OK 

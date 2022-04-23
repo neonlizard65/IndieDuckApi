@@ -38,25 +38,17 @@ if($rowcount > 0){
             "UserAuthToken" => $UserAuthToken,
             "UserGuardCode" => $UserGuardCode,
             "UserLevelId" => $UserLevelId,
-            "LevelNumber" => $LevelNumber,
             "UserAvatar" => $UserAvatar,
             "UserXP" => $UserXP,
             "ProfileBackground" => $ProfileBackground,
             "IsPrivate" => $IsPrivate,
             "StatusId" => $StatusId,
-            "StatusName" => $StatusName,
-            "StatusIcon" => $StatusIcon,
-            "StatusColor" => $StatusColor,
             "UserRealName" => $UserRealName,
             "UserCountryId" => $UserCountryId,
-            "CountryName" => $CountryName,
-            "CountryCode" => $CountryCode,
-            "CountryFlagImage" => $CountryFlagImage,
             "Bio" => $Bio,
             "EmailSubscription" => $EmailSubscription,
             "LastOnline" => $LastOnline,
-            "ContentPrivacyTypeId" => $ContentPrivacyTypeId,
-            "Name" => $Name
+            "ContentPrivacyTypeId" => $ContentPrivacyTypeId
         );
         array_push($user_arr, $user_item);
     }
